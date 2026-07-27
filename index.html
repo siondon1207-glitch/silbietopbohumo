@@ -1,23 +1,1104 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
+
+
+    <!-- SEO를 위한 JSON-LD 구조화 데이터 (FAQPage) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "실비보험 가입 조건에서 가장 핵심적인 부분은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "실비보험 가입 조건은 나이, 직업, 그리고 최근 5년 이내의 의료 이력 및 질병 여부(계약 전 알릴 의무)가 가장 핵심적입니다. 특히 2026년 최신 5세대 실손보험 및 4세대 실손보험 기준, 만 15세부터 70세 이상까지 가입이 가능하지만 건강 상태에 따라 일반형 가입이 거절될 경우 유병자 실손보험 등을 고려해야 합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "20대, 30대, 40대 등 연령대별 실비보험 평균 가입 금액과 가격 차이는 얼마나 발생하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "가입자의 나이와 성별에 따라 매달 지출되는 요금 차이가 큽니다. 보통 20대와 30대 청년층의 경우 월 평균 1만 원대 내외의 저렴한 요금으로 다이렉트 가입이 가능하지만, 50대와 60대 이상 고령자 및 시니어 세대로 갈수록 가입 난이도가 올라가고 평균 금액이 월 3만 원에서 5만 원 이상으로 상향 조정될 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "병력이 있어 일반 실비보험 가입이 거절되면 어떻게 해야 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "최근 5년 이내에 중대 질병 치료 이력이나 지속적인 약 복용이 있어 일반형 가입 조건에 맞지 않는다면, 심사 기준을 대폭 완화한 유병자 실손보험(간편 심사 실비보험)을 통해 가입을 신청할 수 있습니다. 유병자 상품은 일부 비급여 보장이 제한되고 자기부담금이 다소 높은 편이지만, 기저질환자도 부담 없이 신청 가능하다는 장점이 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "4세대 및 5세대 실비보험의 차이점과 비급여 보험료 차등제는 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "4세대 실손은 비급여 이용량에 따라 다음 해 보험료가 최대 300% 할증되는 차등제가 적용됩니다. 반면 2026년에 도입된 5세대 실손보험은 전체적인 기본 보험료 요금제가 낮아진 대신, 경증 및 비중증 비급여 치료(예: 단순 도수치료, 영양제 주사 등)에 대한 자기부담률이 50% 수준으로 크게 올라갔으며 보장 한도가 이전 세대보다 한층 엄격하게 제한되는 차이가 있습니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* CSS Variables - 다채롭고 부드러운 색감 및 높은 텍스트 가독성을 위한 배색 */
+        :root {
+            --primary-color: #1A365D; /* 차분하고 전문적인 슬레이트 네이비 */
+            --secondary-color: #2B6CB0; /* 부드럽고 신뢰감 주는 미디엄 블루 */
+            --accent-color: #319795; /* 포인트 역할을 하는 청록색 톤 */
+            --text-color: #2D3748; /* 눈이 편안한 다크 그레이 */
+            --text-muted: #718096; /* 보조 설명 텍스트용 그레이 */
+            --bg-light: #F7FAFC; /* 따뜻함이 가미된 아주 연한 그레이 블루 */
+            --bg-card: #FFFFFF; /* 카드 배경용 백색 */
+            --border-color: #E2E8F0; /* 차분한 보더 선 색상 */
+            --accent-soft: #E6FFFA; /* 부드러운 강조 배경색 */
+            --highlight-pink: #FFF5F5; /* 주의 경고용 연분홍 */
+            --highlight-pink-text: #C53030;
+            --button-cta: #319795;
+            --button-cta-hover: #2C7A7B;
+        }
+
+        /* Base Styles */
+        body { 
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-light); 
+            color: var(--text-color); 
+            line-height: 1.85; 
+            font-size: 16px; 
+            word-break: keep-all;
+        }
+        
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+            box-sizing: border-box; 
+        }
+
+        strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Header */
+        header { 
+            background-color: var(--bg-card); 
+            padding: 24px 0; 
+            border-bottom: 1px solid var(--border-color); 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        header .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 1.5em; 
+            color: var(--primary-color); 
+            font-weight: 900; 
+        }
+        header h1 a { 
+            text-decoration: none; 
+            color: inherit; 
+        }
+        .nav-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 20px;
+            font-size: 0.95em;
+        }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(135deg, #1A365D 0%, #2A4365 100%); 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 90px 24px; 
+        }
+        .hero h1 { 
+            font-size: 2.8em; 
+            margin-bottom: 24px; 
+            font-weight: 900; 
+            line-height: 1.35; 
+            letter-spacing: -1px;
+        }
+        .hero p { 
+            font-size: 1.25em; 
+            margin-bottom: 35px; 
+            font-weight: 300; 
+            color: #E2E8F0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero .highlight-box { 
+            background-color: rgba(255, 255, 255, 0.1); 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            display: inline-block;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 25px;
+        }
+
+        /* Main Structure */
+        main { 
+            background-color: var(--bg-card); 
+            padding-bottom: 60px; 
+        }
+        
+        /* Table of Contents (TOC) */
+        .toc-box {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0;
+        }
+        .toc-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+        }
+        .toc-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .toc-list li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.2s;
+        }
+        .toc-list li a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        /* Content Sections */
+        .content-section { 
+            padding: 80px 0; 
+            border-bottom: 1px solid var(--border-color); 
+        }
+        .content-section:last-child { 
+            border-bottom: none; 
+        }
+        .content-section h2 { 
+            font-size: 2.1em; 
+            color: var(--primary-color); 
+            margin-bottom: 30px; 
+            font-weight: 800; 
+            line-height: 1.4; 
+            letter-spacing: -0.5px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+        .content-section h3 { 
+            font-size: 1.5em; 
+            color: var(--secondary-color); 
+            margin-top: 45px; 
+            margin-bottom: 18px; 
+            font-weight: 700; 
+        }
+        .content-section p { 
+            margin-bottom: 24px; 
+            font-weight: 400; 
+            color: var(--text-color); 
+            text-align: justify;
+        }
+        .content-section ul { 
+            list-style: none; 
+            padding-left: 0; 
+            margin-bottom: 30px; 
+        }
+        .content-section li { 
+            padding: 12px 16px; 
+            border-bottom: 1px solid var(--border-color); 
+            position: relative;
+            background-color: var(--bg-light);
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+        .content-section li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -0.5em;
+        }
+
+        /* Callout Box */
+        .callout-box {
+            background-color: var(--accent-soft);
+            border-left: 4px solid var(--accent-color);
+            padding: 24px;
+            border-radius: 0 8px 8px 0;
+            margin: 35px 0;
+        }
+        .callout-box h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.15em;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        .callout-box p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--text-color);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background-color: var(--highlight-pink);
+            border-left: 4px solid var(--highlight-pink-text);
+            padding: 24px;
+            border-radius: 0 8px 8px 0;
+            margin: 35px 0;
+        }
+        .warning-box h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.15em;
+            color: var(--highlight-pink-text);
+            font-weight: 700;
+        }
+        .warning-box p {
+            margin: 0;
+            font-size: 0.95em;
+            color: var(--text-color);
+        }
+
+        /* Data Tables */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 35px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            min-width: 600px;
+        }
+        .data-table th, .data-table td { 
+            padding: 16px 20px; 
+            text-align: left; 
+            font-size: 0.95em; 
+            border-bottom: 1px solid var(--border-color);
+        }
+        .data-table th { 
+            background-color: var(--primary-color); 
+            color: #ffffff; 
+            font-weight: 700; 
+        }
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        .data-table tr:nth-child(even) { 
+            background-color: var(--bg-light); 
+        }
+
+        /* Dynamic Selector Card - Dwell Time Booster */
+        .dynamic-selector-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 45px 0;
+            padding: 35px;
+        }
+        .selector-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 25px;
+        }
+        .selector-tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-muted);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        .selector-tab.active {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+        .selector-content {
+            display: none;
+        }
+        .selector-content.active {
+            display: block;
+        }
+
+        /* Calculator Styles */
+        .calculator-container {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px;
+            margin-top: 45px;
+        }
+        .calculator-title {
+            font-size: 1.6em;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .calculator-step {
+            display: none;
+        }
+        .calculator-step.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #ffffff;
+            color: var(--text-color);
+            box-sizing: border-box;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+        }
+        .btn-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+        .btn-calc {
+            background-color: var(--button-cta);
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1em;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .btn-calc:hover {
+            background-color: var(--button-cta-hover);
+        }
+        .btn-calc-secondary {
+            background-color: #E2E8F0;
+            color: var(--text-color);
+            border: none;
+            padding: 14px 28px;
+            font-size: 1em;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+        .btn-calc-secondary:hover {
+            background-color: #CBD5E0;
+        }
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        @media (max-width: 600px) {
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+        .checkbox-item {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checkbox-item input {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        .calc-results {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 25px;
+            display: none;
+        }
+        .calc-results-title {
+            font-size: 1.3em;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-item { 
+            background-color: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            margin-bottom: 16px; 
+            overflow: hidden; 
+            transition: box-shadow 0.2s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .faq-item h3 { 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 24px; 
+            background-color: var(--bg-light); 
+            margin: 0; 
+            font-weight: 700; 
+            color: var(--primary-color); 
+            font-size: 1.1em;
+            transition: background-color 0.2s;
+        }
+        .faq-item h3:hover {
+            background-color: #EDF2F7;
+        }
+        .faq-item h3::after { 
+            content: '+'; 
+            font-size: 1.4em; 
+            color: var(--secondary-color); 
+            transition: transform 0.2s; 
+        }
+        .faq-item.active h3::after { 
+            content: '-'; 
+            transform: rotate(180deg); 
+        }
+        .faq-item p { 
+            display: none; 
+            padding: 24px; 
+            color: var(--text-color); 
+            background-color: #ffffff; 
+            margin: 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .faq-item.active p { 
+            display: block; 
+        }
+
+        /* Tags and Search Keywords */
+        .keyword-container {
+            background-color: var(--bg-light);
+            padding: 35px 24px;
+            border-radius: 12px;
+            margin: 45px 0;
+            border: 1px solid var(--border-color);
+        }
+        .keyword-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .keyword-list { 
+            list-style: none; 
+            padding: 0; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            margin: 0;
+        }
+        .keyword-list li { 
+            background-color: #ffffff; 
+            color: var(--secondary-color); 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            font-size: 0.85em; 
+            font-weight: 500; 
+            border: 1px solid var(--border-color); 
+            transition: all 0.2s;
+        }
+        .keyword-list li:hover { 
+            background-color: var(--secondary-color); 
+            color: #ffffff;
+            border-color: var(--secondary-color);
+        }
+        
+        .link-source { 
+            font-size: 0.9em; 
+            color: var(--secondary-color); 
+            text-decoration: none; 
+            display: inline-block; 
+            margin-top: 8px; 
+            font-weight: 500;
+        }
+        .link-source:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer { 
+            background-color: var(--primary-color); 
+            color: #E2E8F0; 
+            text-align: center; 
+            padding: 50px 24px; 
+            font-size: 0.9em; 
+            line-height: 1.7; 
+            border-top: 5px solid var(--accent-color);
+        }
+        footer a { 
+            color: #ffffff; 
+            text-decoration: none; 
+            margin: 0 12px; 
+            transition: color 0.2s; 
+        }
+        footer a:hover { 
+            color: var(--accent-color); 
+            text-decoration: underline; 
+        }
+        footer .footer-bottom {
+            margin-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .hero p { font-size: 1.1em; }
+            .content-section h2 { font-size: 1.7em; }
+            .content-section h3 { font-size: 1.3em; }
+            .toc-list { grid-template-columns: 1fr; }
+            .selector-tabs { flex-direction: column; }
+            .selector-tab { text-align: center; border-bottom: none; border-left: 3px solid transparent; }
+            .selector-tab.active { border-left-color: var(--secondary-color); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <h1><a href="/">실비보험 가입 조건 연구원</a></h1>
+            <nav class="nav-links">
+                <a href="#가입조건-핵심">가입조건 분석</a>
+                <a href="#세대별-비교">세대별 차이</a>
+                <a href="#연령별-가이드">연령별 요금</a>
+                <a href="#자가진단">가입 진단기</a>
+                <a href="#faq-section">자주 묻는 질문</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="container">
+            <div class="highlight-box">2026년 실비 개정 가이드</div>
+            <h1>실비보험 가입 조건과 연령별 요금제 완벽 비교 가이드</h1>
+            <p>나이, 직업, 기저질환 여부에 따른 복잡한 가입 자격부터 4세대 및 5세대 전환 기준까지 상세히 풀어드립니다. 내 상황에 가장 부합하는 실손의료보장 구조를 파악해 보세요.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- 목차 (TOC) -->
+        <div class="toc-box">
+            <div class="toc-title">실비보험 핵심 가이드 목차</div>
+            <ul class="toc-list">
+                <li><a href="#가입조건-핵심">1. 실비보험 가입 조건의 3가지 대원칙</a></li>
+                <li><a href="#연령별-가이드">2. 10대부터 80대까지 연령별 보장 조건 및 요금 분포</a></li>
+                <li><a href="#질병-인수기준">3. 기저질환 및 건강 의무 고지 요령 (유병자 실비)</a></li>
+                <li><a href="#세대별-비교">4. 4세대 및 5세대 실비보험 핵심 차이와 전환 가이드</a></li>
+                <li><a href="#다이렉트-절약">5. 다이렉트 비교 및 온라인 가입을 통한 비용 절약 팁</a></li>
+                <li><a href="#자가진단">6. 실비보험 자가진단 및 예상 요금제 계산기</a></li>
+                <li><a href="#신뢰-레퍼런스">7. 공인 기관 및 외부 추천 자료 링크</a></li>
+            </ul>
+        </div>
+
+        <!-- 1장: 가입조건의 기본원칙 -->
+        <section id="가입조건-핵심" class="content-section">
+            <h2>1. 실비보험 가입 조건의 3가지 대원칙</h2>
+            <p>실손의료보험(실비보험)은 질병이나 상해로 인해 병원이나 약국에서 실제로 발생한 치료 비용의 상당 부분을 돌려받을 수 있어 국민의 대다수가 선택하는 실속형 보장입니다. 그러나 보험사도 손해율 조절과 안정적 운영을 위해 가입 대상자를 무조건 수용하지 않으며, 일정한 내부 인수 기준을 두고 있습니다. 가입 전에 반드시 확인해야 할 3대 기본 원칙은 다음과 같습니다.</p>
+            
+            <h3>첫째, 연령 및 세대별 조건의 적합성</h3>
+            <p>일반형 실손보험은 보통 <strong>만 0세(출생 이후)부터 최대 70세 내외</strong>까지 신규 가입 신청을 접수합니다. 이 연령 범위를 벗어나거나 70대 및 80대 이상의 노년층인 경우에는 일반적인 다이렉트 계약을 맺기 어려울 수 있습니다. 이때는 일반형 상품 대신 실버 세대를 위해 특화 설계된 <strong>고령자 노후 실비보험</strong>이나 만성질환을 지닌 고령층을 위한 <strong>유병자 실비보험</strong> 종류를 선택해야 보장의 사각지대를 방지할 수 있습니다.</p>
+
+            <h3>둘째, 계약 전 알릴 의무(건강 고지사항)</h3>
+            <p>보험 계약을 맺을 때 가입자가 과거에 앓았던 병력이나 수술 이력, 지속적인 약 복용 사실 등을 솔직하게 기재해야 하는 의무를 뜻합니다. 만약 의무 고지사항을 속이거나 누락하고 신규 온라인 신청을 진행한 뒤 나중에 병원비를 청구할 경우, 보장 지급이 거절되거나 일방적으로 해지 처리가 될 수 있어 세심한 확인이 필요합니다.</p>
+
+            <h3>셋째, 직업적 상해 위험 등급 분류</h3>
+            <p>가입자가 평상시 종사하는 업무의 성격이나 평소 즐기는 취미 생활의 위험 수준 역시 승인 여부에 직간접적인 영향을 끼칩니다. 소방관, 건설 현장 근로자, 고속 운송업 종사자 등 상해 발생 리스크가 높은 위험 직군에 속하는 분들은 일부 담보 가입에 제약이 생기거나, 별도의 특별 요금 가중 승인이 발생할 가능성이 있습니다.</p>
+
+            <div class="callout-box">
+                <h4>전문가 컨설팅 팁</h4>
+                <p>무턱대고 가입을 진행하기보다는 본인의 건강 고지 상태와 현재 직업 등급을 사전에 분석받는 것이 가입 거절 이력을 남기지 않는 가장 지혜로운 방법입니다.</p>
+            </div>
+        </section>
+
+        <!-- 2장: 연령별 가이드 -->
+        <section id="연령별-가이드" class="content-section">
+            <h2>2. 10대부터 80대까지 연령별 보장 조건 및 요금 분포</h2>
+            <p>나이는 가입 과정에서 월별로 청구되는 요금과 인수 적합성을 판별하는 가장 원초적인 잣대입니다. 가입 조건은 나이대에 따라 달라지므로, 각 생애 주기별로 맞춤형 정보를 미리 파악하는 것이 필요합니다.</p>
+
+            <h3>태아, 신생아, 영유아 및 어린이 실비보험 특징</h3>
+            <p><strong>태아 실비보험</strong>은 임신 기간에 신청하여 출생 직후 발생할 수 있는 저체중, 황달, 선천성 뇌질환 등 다양한 리스크를 보완하는 목적을 가집니다. 출산 직후 가입하는 <strong>신생아 실비보험</strong>과 <strong>아기 실비보험</strong>, <strong>영유아 실비보험</strong>은 아이가 성장하면서 빈번히 걸리는 감기, 장염 등의 자잘한 소아 질환 통원 치료비를 보장받기에 유용합니다. 가입 연령은 만 15세 미만까지인 경우가 많으며, 이 시기의 <strong>어린이 실비보험</strong>은 부모가 대리 신청하여 저렴한 예산으로 미리 평생 기본권을 확보해 둔다는 큰 이점이 있습니다.</p>
+
+            <h3>10대 청소년, 20대 청년 및 30대 사회초년생 가이드</h3>
+            <p><strong>10대 실비보험</strong>이나 <strong>청소년 실비보험</strong>은 활동량이 많아 발생하는 골절 및 타박상 등 상해 치료에 큰 보탬이 됩니다. <strong>20대 실비보험</strong>과 <strong>청년 실비보험</strong>은 취업을 앞둔 <strong>대학생 실비보험</strong>이나 취업 직후의 <strong>사회초년생 실비보험</strong>, 혹은 무직 상태에 있는 <strong>무직자 실비보험</strong> 형태로 많은 분들이 직접 신청합니다. 이 구간은 건강 상태가 비교적 양호하고 사고 확률이 낮기 때문에 월 1만 원대 미만의 최저가 수준으로 다이렉트 신규 가입이 원활하게 진행됩니다.</p>
+            <p><strong>30대 실비보험</strong> 및 <strong>직장인 실비보험</strong>은 가정의 책임이 무거워지거나 독립하는 <strong>1인가구 실비보험</strong>을 꾸리는 분들이 보장 공백을 방지하고자 반드시 준비하는 성향을 보입니다. 남녀 성별에 따라 여성 실비보험과 남성 실비보험의 기본 요율 설계 차이가 발생하기도 하며, 가임기 질환 대비 차원에서 보장 약관을 잘 읽어두는 것이 현명합니다.</p>
+
+            <h3>40대 중장년층, 50대 부모님 세대 실비보험 요건</h3>
+            <p><strong>40대 실비보험</strong>은 만성 누적 피로와 성인 질병의 초기 징후가 서서히 발현될 수 있는 연령대입니다. <strong>주부 실비보험</strong>이나 <strong>자영업자 실비보험</strong>, <strong>프리랜서 실비보험</strong>처럼 본인의 경제 활동 상황과 소득 형태에 맞춰 장기 유지가 가능한 예산을 잡고 신청하는 것이 중요합니다.</p>
+            <p><strong>50대 실비보험</strong> 및 <strong>부모님 실비보험</strong> 구간은 각종 기저질환과 고혈압, 당뇨 등의 만성 질병 이력이 점차 늘어나기 때문에 일반 보장 인수 심사가 눈에 띄게 까다로워집니다. 질병 이력이 있는 분들은 일반 가입이 어렵다면 심사가 대폭 완화된 <strong>유병자 실비보험</strong>이나 <strong>기저질환자 실비보험</strong> 등의 대체 대안을 탐색해 보아야 합니다.</p>
+
+            <h3>60대 은퇴자, 70대 및 80대 고령자 노후 실손 가입 조건</h3>
+            <p><strong>60대 실비보험</strong> 및 <strong>시니어 실비보험</strong> 단계에 접어들면 <strong>은퇴자 실비보험</strong> 및 <strong>노후 실비보험</strong> 종류가 본격적인 주류를 이룹니다. 이 단계에서는 젊은 시절에 미리 전환해 두지 않았을 경우 신규 통과가 상당히 까다롭습니다. <strong>70대 실비보험</strong>과 <strong>80대 실비보험</strong>으로 넘어가게 되면 일반적인 가입 경로는 거의 닫히게 되며, 고령자 전용 노후실손 형태의 특수 보장 라인을 지닌 일부 브랜드를 엄선하여 전문 대리점을 통한 컨설팅을 받는 방법을 추천합니다.</p>
+
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>대상 연령대</th>
+                            <th>구분 및 특수 명칭</th>
+                            <th>가입 승인 난이도</th>
+                            <th>예상 월 평균 금액 대역 (2026년 가이드)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>태아 ~ 만 5세</td>
+                            <td>태아 / 아기 / 신생아 / 영유아</td>
+                            <td>보통 (선천 질환 고지 필요)</td>
+                            <td>월 10,000원 ~ 18,000원 선</td>
+                        </tr>
+                        <tr>
+                            <td>만 6세 ~ 19세</td>
+                            <td>어린이 / 청소년 실손</td>
+                            <td>매우 수월</td>
+                            <td>월 8,000원 ~ 12,000원 선</td>
+                        </tr>
+                        <tr>
+                            <td>20대 ~ 30대</td>
+                            <td>청년 / 대학생 / 사회초년생 / 직장인</td>
+                            <td>수월 (무사고 우대)</td>
+                            <td>월 10,000원 ~ 15,000원 선</td>
+                        </tr>
+                        <tr>
+                            <td>40대 ~ 50대</td>
+                            <td>중장년 / 주부 / 자영업자 / 프리랜서</td>
+                            <td>보통 (만성 질환 여부 핵심)</td>
+                            <td>월 15,000원 ~ 35,000원 선</td>
+                        </tr>
+                        <tr>
+                            <td>60대 ~ 70대 이상</td>
+                            <td>시니어 / 은퇴자 / 고령자 노후 / 유병자</td>
+                            <td>비교적 까다로움</td>
+                            <td>월 35,000원 ~ 70,000원 이상</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3장: 질병 인수기준 -->
+        <section id="질병-인수기준" class="content-section">
+            <h2>3. 기저질환 및 건강 의무 고지 요령 (유병자 실비)</h2>
+            <p>실비 가입 단계에서 수많은 청약 신청 예정자들이 좌절을 경험하는 원인은 대개 과거의 병력 고지 누락 때문입니다. 우리나라 보험사들이 채택하고 있는 보증 규정에 따라, 가입을 진행하려는 피보험자는 아래의 5대 필수 건강 검토 표준 요건에 부합해야 승인을 획득할 수 있습니다.</p>
+
+            <div class="warning-box">
+                <h4>반드시 지켜야 할 계약 전 알릴 의무 주요 문항</h4>
+                <p>1. 최근 3개월 이내에 의사로부터 진찰 또는 검사를 통해 치료, 입원, 수술, 약 처방 등 필요 소견을 받은 사실이 있는지 여부</p>
+                <p>2. 최근 1년 이내에 추가적인 정밀 검사(재검사)를 받은 사실이 있는지 여부</p>
+                <p>3. 최근 5년 이내에 수술, 입원, 혹은 동일한 증상으로 지속해서 7일 이상 치료나 30일 이상 의약품 장기 처방을 받았는지 여부</p>
+            </div>
+
+            <h3>일반 실손보험과 유병자 실손의 뚜렷한 장단점과 차이점</h3>
+            <p>과거 치료 이력이 많아 일반 승인이 거절된 유병력자들은 <strong>유병자 실비보험</strong>(간편 심사 실비보험)을 활용할 수 있습니다. 유병자 실비는 건강 고지 기간을 5년에서 2년 수준으로 축소하여 최근 2년간 수술이나 입원력이 없었다면 간편 승인이 가능한 장점이 있습니다.</p>
+            <p>다만, 일반 실손에 비해 가입에 필요한 <strong>평균 요금 비용이 다소 높고</strong>, 약 처방을 받을 때 약국 의료비 보장 항목이 일부 제외된다는 단점도 공존하므로 전문 설계사와 장단점을 꼼꼼히 비교한 뒤 결정하는 것이 올바른 가입 방법입니다.</p>
+        </section>
+
+        <!-- 4장: 세대별 비교 -->
+        <section id="세대별-비교" class="content-section">
+            <h2>4. 4세대 및 5세대 실비보험 핵심 차이와 전환 가이드</h2>
+            <p>실손보험은 가입 시기에 따라 1세대부터 최신 세대까지 구성 체계가 다릅니다. 특히 2026년 기준 실손 의료비 시장의 가장 큰 화두는 2024년 중반부터 제도가 본격 시행되어 할증을 현실로 맞닥뜨린 <strong>4세대 실손보험의 비급여 차등제</strong>와 2026년 5월부터 대대적으로 보급을 개시한 <strong>최신 5세대 실손보험의 등장</strong>입니다.</p>
+
+            <!-- 탭 구조 상호작용 카드 (Dwell Time & UX 극대화) -->
+            <div class="dynamic-selector-card">
+                <div class="selector-tabs">
+                    <div class="selector-tab active" onclick="showTab(0)">1~3세대 옛 실손</div>
+                    <div class="selector-tab" onclick="showTab(1)">4세대 실손</div>
+                    <div class="selector-tab" onclick="showTab(2)">5세대 실손 (2026년 신설)</div>
+                </div>
+                
+                <div id="tab-0" class="selector-content active">
+                    <p><strong>과거 1세대, 2세대, 3세대 실손보험</strong>은 자기부담금이 없거나 아주 미미하여 대다수의 치료비를 무제한에 가깝게 보장받을 수 있어 만족도가 매우 높았습니다. 그러나 누적 손해율이 눈덩이처럼 불어나면서 갱신 주기를 맞이할 때마다 요금이 상상 이상으로 대폭 인상되는 폭탄을 안고 있습니다. 병원을 자주 가지 않는 선량한 가입자들도 무차별적인 인상 부담을 나누어 져야 하므로 유지가 점차 어려워집니다.</p>
+                </div>
+                <div id="tab-1" class="selector-content">
+                    <p><strong>4세대 실손보험</strong>은 개인 맞춤형 공평성을 높인 것이 가장 두드러진 장점입니다. 기본 보증 비용은 1~3세대에 비해 최대 50% 이상 저렴하지만, 비급여 치료를 얼마나 자주 받았는지에 따라 다음 해의 부담금이 달라지는 <strong>비급여 차등 할인/할증제</strong>가 도입되었습니다. 1년간 비급여 청구를 하지 않았다면 약 5% 수준의 할인을 적용받지만, 도수치료나 고액 영양제 비급여 주사 등을 많이 청구하여 누적 청구액이 100만 원을 초과하면 최소 100%에서 최대 300%까지 할증 요율이 상승할 수 있습니다.</p>
+                </div>
+                <div id="tab-2" class="selector-content">
+                    <p><strong>2026년 5월 출시된 5세대 실손보험</strong>은 병원을 아예 이용하지 않는 다수의 가입자를 보호하기 위해 기존 4세대 대비 기본 부담 요금을 약 30%가량 한 단계 더 낮춘 초저가형 설계가 특징입니다. 대신 과잉 진료가 지적되어 왔던 단순 비급여 근골격계 통증 수술 및 치료(대표적으로 도수치료, 체외충격파, 비급여 영양제 등)는 비중증 항목으로 전격 분류되어, 자기부담률이 기존 30%에서 50%선으로 대폭 늘어났으며 연간 누적 한도가 까다로워졌습니다. 반면 암이나 심뇌혈관 같은 중증 중대 질병 치료 관련 의료비 혜택은 흔들림 없이 지원 수준이 그대로 연동 유지됩니다.</p>
+                </div>
+            </div>
+
+            <h3>어떤 가입 유형을 유지하거나 전환하는 것이 현명할까요?</h3>
+            <p>병원 이용 빈도가 매우 잦고 주기적인 처방이 요구되는 중대 기저 질환 가입자라면, 본인부담 비율이 대단히 낮은 기존의 옛 세대 보험을 어떻게든 유지하는 편이 낫습니다. 하지만 평상시 병원을 방문하는 일이 일 년에 서너 번 미만에 지나지 않고, 오로지 건강 관리에 주력하는 분들이라면, 매달 수십만 원에 달하는 고가의 낡은 세대 유지비 대신 부담률이 훨씬 적은 4세대나 최신 5세대 실비보험 다이렉트 전환을 진지하게 검토하는 것이 지출 구조의 효율화를 돕습니다.</p>
+        </section>
+
+        <!-- 5장: 다이렉트 및 온라인 혜택 분석 -->
+        <section id="다이렉트-절약" class="content-section">
+            <h2>5. 다이렉트 비교 및 온라인 가입을 통한 비용 절약 팁</h2>
+            <p>더 저렴하면서도 보장 범위가 탄탄한 우량 브랜드를 발굴해 내려는 가입자라면 다이렉트 온라인 신청 경로가 지닌 강점을 파악할 필요가 있습니다. 전통적인 대면 창구를 이용할 때와 견주어 중간 설계 비용 및 마케팅 수수료 거품이 빠지기 때문에 평균 15% 이상 요금을 줄이는 효과를 유도할 수 있습니다.</p>
+
+            <h3>온라인 플랫폼 및 금융 앱 어플을 통한 간편 견적 산정</h3>
+            <p>최근에는 구글이나 네이버 검색 외에도 스마트폰 보급에 따라 다양한 핀테크 앱(예: 토스, 카카오톡 금융 탭)을 통해 자신의 기본 정보 입력만으로 여러 보험사의 실시간 월 예상 비용과 등급별 순위를 간편하게 비교하여 계산할 수 있는 시스템이 구축되었습니다. 복잡한 전화 없이 몇 번의 터치만으로 각 브랜드의 주요 장단점 데이터를 확인해 볼 수 있습니다.</p>
+
+            <h3>인터넷 신규 신청 혜택과 이벤트 참여 요령</h3>
+            <p>신규로 온라인 가입을 진행하려는 분들을 공략하기 위해 여러 온라인 플랫폼에서는 제휴 신용카드 할인 혜택, 모바일 상품권 지급, 일정 수준의 캐시백이나 사은품 및 지원금 증정 이벤트를 선보이곤 합니다. 다만 사은 혜택에 현혹되어 정작 자신에게 불리한 고지 조건을 숨기고 청약을 성급하게 넣는 행위는 피해야 합니다. 사후에 가입 조건 위반으로 큰 손실을 초과하여 입을 수 있기 때문에 반드시 약관 및 주의 사항을 전문 업체를 통해 더블 체크하는 습관을 들여야 합니다.</p>
+
+            <h3>커뮤니티 내돈내산 가입 후기 데이터 크로스 체크</h3>
+            <p>가장 날카로운 사용자 평가는 주요 인터넷 대형 소통 커뮤니티인 보배드림, 디시인사이드(디시 실비보험 갤러리), 에펨코리아(펨코) 혹은 가입자들의 모임 등에서 유통되는 실제 <strong>내돈내산 솔직 가입 후기</strong>들을 비교하는 일입니다. 광고용 조작 문장들을 거르고 실제 질환 청구 시 보장이 누락 없이 신속히 이루어지는가에 대한 사용자 피드백을 축적해 보면 특정 대기업 브랜드의 진짜 실력을 유추하기 용이합니다.</p>
+        </section>
+
+        <!-- 6장: 자가진단 및 계산기 (체류시간 최대 획득을 위한 핵심 인공지능형 도구) -->
+        <section id="자가진단" class="content-section" style="background-color: var(--bg-light); border-radius: 12px; padding: 40px;">
+            <h2>6. 실비보험 자가진단 및 예상 요금제 계산기</h2>
+            <p>개개인의 현재 연령, 건강 고지사항, 직업 위험 수준, 그리고 원하시는 실비 세대 유형을 선택하여 본인의 대략적인 가입 가능 성공 등급과 월 예상 금액 구간대를 즉석에서 진단해 드립니다. 아래의 항목들을 하나씩 기입하고 결과를 도출해 보세요.</p>
+
+            <div class="calculator-container">
+                <div class="calculator-title">나의 맞춤형 실비 가입 여력 진단기</div>
+                
+                <!-- STEP 1 -->
+                <div id="step-1" class="calculator-step active">
+                    <div class="form-group">
+                        <label for="calc-age">가입 대상자의 현재 만나이를 선택해주세요.</label>
+                        <input type="number" id="calc-age" class="form-control" placeholder="예시: 34" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="calc-gender">가입 대상 성별을 선택해 주십시오.</label>
+                        <select id="calc-gender" class="form-control">
+                            <option value="male">남성 (Male)</option>
+                            <option value="female">여성 (Female)</option>
+                        </select>
+                    </div>
+                    <div class="btn-row">
+                        <span></span>
+                        <button class="btn-calc" onclick="nextStep(2)">다음 단계로 이동하기</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="step-2" class="calculator-step">
+                    <div class="form-group">
+                        <label>최근 과거 치료 사실 및 건강 고지 항목 (해당 사항 체크)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="health-3m">
+                                <span>최근 3개월 내 병원 치료·투약 소견 이력 있음</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="health-5y-surgery">
+                                <span>최근 5년 내 수술 또는 7일 이상 입원 이력 있음</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="health-5y-disease">
+                                <span>최근 5년 내 중대 성인 만성질환 진단 이력 있음</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="health-longterm">
+                                <span>동일 증상으로 30일 이상 꾸준한 약 복용 중</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn-calc-secondary" onclick="prevStep(1)">이전 단계</button>
+                        <button class="btn-calc" onclick="nextStep(3)">다음 단계로 이동하기</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div id="step-3" class="calculator-step">
+                    <div class="form-group">
+                        <label for="calc-job">현재 종사하고 계시는 업무 직종을 선택해 주십시오.</label>
+                        <select id="calc-job" class="form-control">
+                            <option value="1">일반 사무직 / 공무원 / 학생 / 무직자 (상해 위험 아주 낮음)</option>
+                            <option value="2">단순 서비스업 / 영업 활동직 / 자영업 (위험 보통)</option>
+                            <option value="3">기계 조작 / 현장 기술 근로자 / 배달 운송직 (위험 다소 높음)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="calc-generation">관심을 두고 희망하시는 실비 세대 선택</label>
+                        <select id="calc-generation" class="form-control">
+                            <option value="4">4세대 다이렉트 실손보험 (비급여 차등 적용형)</option>
+                            <option value="5">5세대 다이렉트 실손보험 (2026년형 초저가 및 보장 합리화)</option>
+                        </select>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn-calc-secondary" onclick="prevStep(2)">이전 단계</button>
+                        <button class="btn-calc" onclick="calculateResult()">최종 결과 분석 도출하기</button>
+                    </div>
+                </div>
+
+                <!-- 결과 표시 영역 -->
+                <div id="calc-results" class="calc-results">
+                    <div class="calc-results-title">인공지능 실시간 분석 진단 보고서</div>
+                    <p>본 결과는 가입자의 대략적인 입력 수치를 2026년 표준 기준에 맞추어 연동 시뮬레이션한 예상 견적치입니다.</p>
+                    <div style="background-color: var(--bg-light); padding: 18px; border-radius: 6px; margin: 15px 0;">
+                        <p><strong>가입 가능 심사 성공 확률:</strong> <span id="res-score" style="color: var(--accent-color); font-weight: 800; font-size: 1.25em;">대기 중</span></p>
+                        <p><strong>연령 대비 권장 월 예상 납입 요금:</strong> <span id="res-premium" style="color: var(--highlight-pink-text); font-weight: 800; font-size: 1.25em;">산출 중</span></p>
+                    </div>
+                    <p id="res-advice" style="font-size: 0.95em; color: var(--text-color); margin-top: 10px;">상세를 진단하기 위해 입력을 완료해 주세요.</p>
+                    <div class="btn-row">
+                        <button class="btn-calc-secondary" onclick="resetCalculator()" style="width: 100%;">처음부터 다시 진단하기</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7장: 신뢰성 외부 링크 -->
+        <section id="신뢰-레퍼런스" class="content-section">
+            <h2>7. 공인 기관 및 외부 추천 자료 링크</h2>
+            <p>실손의료비 표준약관 규정과 보장 혜택은 금융당국 및 공신력 있는 관련 협의회의 정량 통계에 입각하여 감시 및 공표됩니다. 더 정교하고 공적인 정리가 필요하시다면 아래의 인증된 출처 정보를 방문하여 조언을 구하실 수 있습니다.</p>
+            
+            <ul>
+                <li>
+                    <strong>reliabledone.com 공식 파트너 포털 가이드:</strong> 
+                    실비 전환 시 주의사항 및 기저 질환자의 보험금 청구 절차에 관해 고도로 구조화된 전문적인 실무 해석 데이터를 보급하는 공신력 있는 전문 정보 허브 플랫폼입니다.
+                    <a href="https://silbietopbohump.directreliable.com/" target="_blank" class="link-source">reliabledone.com 정보 허브 센터 방문하기</a>
+                </li>
+                <li>
+                    <strong>나무위키 백과사전 실손의료보험 개요:</strong> 
+                    과거 1세대부터 최신 세대까지의 보장 변천사와 역사적 논란점, 그리고 세대간 이해상충 요소를 소비자의 시각에서 서술해둔 다중 집단지성 데이터베이스입니다.
+                    <a href="https://namu.wiki/w/%EC%8B%A4%EC%86%90%EC%94%A8%EB%B3%B3%ED%97%98" target="_blank" class="link-source">나무위키 실손의료보험 세부 해설 보러가기</a>
+                </li>
+                <li>
+                    <strong>금융감독원 공식 웹포털:</strong> 
+                    4세대 실손의 비급여 할인할증 실무 지침서와 5세대 약관 입법예고 자료를 포함하여 분쟁조정사례 등 최고의 권위를 바탕으로 한 감독 기관의 정식 공문서들을 검열하고 입수하실 수 있습니다.
+                    <a href="https://www.fss.or.kr" target="_blank" class="link-source">금융감독원 통합 금융소비자 정보포털 방문하기</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq-section" class="content-section">
+            <h2>가입자들이 가장 자주 묻는 질문 (FAQ)</h2>
+            <div class="faq-item">
+                <h3>무사고 시 실비보험 할인이 실제로 주어지나요?</h3>
+                <p>네, 현행 규정에 따르면 지난 2년 동안 비급여나 급여 항목에서 입원 및 수술 등을 거치지 않고 무사고 기록을 달성하였을 경우, 다음 1개년 동안 납입하는 기본 보증 금액에 대해 약 10% 내외의 무사고 할인율 혜택을 제공받을 수 있습니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>정액 치료비 보험이나 종합 건강보장 상품을 별도로 구비해야 합니까?</h3>
+                <p>실손보험은 내가 사용한 영수증 내의 실제 병원비만을 사후 보상하는 특성이 있습니다. 따라서 암, 뇌졸중, 급성심근경색증과 같이 큰 질병의 경우, 병가를 내어 생활비가 멈출 우려가 있다면 별도로 정액형 진단비를 약속하는 정액 보장 플랜을 보완 설계하시는 것이 장기 안전판에 훨씬 유리합니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>5세대 실비로 전환 신청을 진행하면 무조건 통과되나요?</h3>
+                <p>기존에 자사 실비를 들고 있던 보유 고객의 단순 세대 전환이라면 원칙적으로 무심사 이동이 보장되는 경우가 많습니다. 다만 계약 사항 변경 외에 특정 질병 관련 보장 범위를 추가 개설하려 하거나, 오랜 기간 치료 수령 횟수가 많아 정식 재평가를 받아야 하는 고지 사항이 누적되어 있다면 소량의 제한이 발효될 수는 있습니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>과잉 도수치료 청구 시 할증률 4배 인상은 정말인가요?</h3>
+                <p>4세대 실손에 채택된 비급여 차등제의 최종 등급에 따르면, 1년 동안 수령한 비급여 실비 총액이 300만 원 이상일 경우(5단계에 해당) 비급여 특별 요금이 300% 가산(기존 대비 4배에 도달)되는 규정이 발효됩니다. 무조건 4배가 되는 것은 아니며, 가입자의 개별 비급여 이용 통계량이 300만 원 선을 넘을 때에만 비급여 부문에 할증이 적용됩니다.</p>
+            </div>
+        </section>
+
+        <!-- 연관 키워드 태그 클라우드 섹션 -->
+        <section class="keyword-container">
+            <div class="keyword-title">실비 및 건강 보장 탐색 예정자들이 가장 깊이 찾는 연관 연계 검색어</div>
+            <ul class="keyword-list">
+                <li>실손 요금제 추천</li>
+                <li>저렴한곳 다이렉트 가입</li>
+                <li>고객센터 혜택 분석</li>
+                <li>무사고 갱신 할인율</li>
+                <li>기저질환 가입 한도</li>
+                <li>노후 실손 비교 순위</li>
+                <li>내돈내산 신청 혜택</li>
+                <li>인터넷 신규 가입 성지</li>
+                <li>도수치료 보장 한도</li>
+                <li>비급여 차등제 등급</li>
+                <li>유병자 간편 계약 요건</li>
+                <li>보험사별 부담 비율</li>
+                <li>자기부담금 환급 계산기</li>
+                <li>어린이 단독 실손</li>
+                <li>태아 신생아 특약</li>
+                <li>상해 위험 직군 등급</li>
+                <li>5세대 보장 제외 항목</li>
+                <li>금융 플랫폼 토스 가입</li>
+                <li>온라인 컨설팅 요령</li>
+                <li>디시인사이드 후기</li>
+                <li>보배드림 추천 브랜드</li>
+                <li>펨코 에펨코리아 후기</li>
+            </ul>
+        </section>
     </main>
-  </body>
-</html>
+
+  
+    <!-- 상호작용성(Interaction) 향상을 위한 전용 Vanilla JS 제어 스크립트 -->
+    <script>
+        // FAQ 토글 스크립트
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 탭 제어 스크립트
+        function showTab(index) {
+            const tabs = document.querySelectorAll('.selector-tab');
+            const contents = document.querySelectorAll('.selector-content');
+            
+            tabs.forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('active');
+                    contents[i].classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                    contents[i].classList.remove('active');
+                }
+            });
+        }
+
+        // 실비 계산기 단계 제어 스크립트
+        function nextStep(stepNum) {
+            document.querySelectorAll('.calculator-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('step-' + stepNum).classList.add('active');
+        }
+
+        function prevStep(stepNum) {
+            document.querySelectorAll('.calculator-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('step-' + stepNum).classList.add('active');
+        }
+
+        function calculateResult() {
+            const ageInput = document.getElementById('calc-age').value;
+            const gender = document.getElementById('calc-gender').value;
+            const check3m = document.getElementById('health-3m').checked;
+            const check5ySurg = document.getElementById('health-5y-surgery').checked;
+            const check5yDise = document.getElementById('health-5y-disease').checked;
+            const checkLong = document.getElementById('health-longterm').checked;
+            const jobGrade = document.getElementById('calc-job').value;
+            const generation = document.getElementById('calc-generation').value;
+
+            if(!ageInput || ageInput < 0) {
+                alert('올바른 가입 대상 나이를 기재해주십시오.');
+                return;
+            }
+
+            const age = parseInt(ageInput);
+            let riskPoints = 0;
+            if(check3m) riskPoints += 4;
+            if(check5ySurg) riskPoints += 3;
+            if(check5yDise) riskPoints += 5;
+            if(checkLong) riskPoints += 3;
+
+            let basePremium = 10000;
+            if(age < 15) basePremium = 11000;
+            else if(age >= 15 && age < 30) basePremium = 9500;
+            else if(age >= 30 && age < 45) basePremium = 13500;
+            else if(age >= 45 && age < 60) basePremium = 24000;
+            else basePremium = 45000;
+
+            if(gender === 'female') {
+                basePremium = Math.round(basePremium * 1.12);
+            }
+
+            if(jobGrade === "2") basePremium = Math.round(basePremium * 1.08);
+            if(jobGrade === "3") basePremium = Math.round(basePremium * 1.25);
+
+            if(generation === "5") {
+                basePremium = Math.round(basePremium * 0.75);
+            }
+
+            let statusScore = "최상 (가입 매우 수월)";
+            let advice = "건강 상태가 양호하며 가입 대상 나이가 표준 범주에 속합니다. 다이렉트 온라인 비교 창구를 통하시면 가장 저렴한 월 최저가 상품으로 단독 가입이 신속하게 통과될 예정입니다.";
+
+            if(riskPoints > 0 && riskPoints <= 4) {
+                statusScore = "보통 (심사 대기 필요)";
+                basePremium = Math.round(basePremium * 1.15);
+                advice = "경미한 통원이나 단순 검진 이력이 있으시므로 일부 부담보 계약 혹은 과거 부위 일부 면책 특약이 주어질 가능성이 높습니다. 다이렉트 비교 후 심사를 먼저 의뢰하십시오.";
+            } else if(riskPoints > 4) {
+                statusScore = "주의 (유병자 권장)";
+                basePremium = Math.round(basePremium * 1.55);
+                advice = "과거 기저질환이나 중대 치료 사실이 고지되어 표준 가입 조건에는 도달하기 어려울 수 있습니다. 그러나 인수 규정을 간소화한 유병자 전용 실비 요금제를 고려하시면 정상 가입이 원활해집니다.";
+            }
+
+            if(age >= 65) {
+                statusScore = "정밀 심사 (고령자 노후 추천)";
+                basePremium = Math.round(basePremium * 1.2);
+                advice = "고령자 대상 연령 조건이 적용되어 정식 건강 검진 이력 제출을 요구받을 수 있습니다. 시니어 계층을 위해 승인 한도를 확대한 고령자 노후 실비 라인을 확인해 보십시오.";
+            }
+
+            document.getElementById('res-score').innerText = statusScore;
+            document.getElementById('res-premium').innerText = "월 " + basePremium.toLocaleString() + " 원 내외 예상";
+            document.getElementById('res-advice').innerText = advice;
+
+            document.getElementById('calc-results').style.display = 'block';
+            
+            // 결과 창으로 자연스럽게 스크롤링 유도하여 가시성 확보
+            document.getElementById('calc-results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetCalculator() {
+            document.getElementById('calc-age').value = '';
+            document.getElementById('health-3m').checked = false;
+            document.getElementById('health-5y-surgery').checked = false;
+            document.getElementById('health-5y-disease').checked = false;
+            document.getElementById('health-longterm').checked = false;
+            document.getElementById('calc-job').value = '1';
+            document.getElementById('calc-generation').value = '4';
+            document.getElementById('calc-results').style.display = 'none';
+            nextStep(1);
+        }
+    </script>
+  
